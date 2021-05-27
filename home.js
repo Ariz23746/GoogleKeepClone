@@ -162,6 +162,7 @@ addCardBtn.addEventListener("click",() => {
 	document.querySelector(".container__inputDefaultView").classList.remove("hide");
 	document.querySelector(".container__inputOpenView").classList.remove("activate");
 	cardContainer.style.backgroundColor = "#202124";
+	localStorage.setItem("card")
 })
 
 // Delete Card
@@ -205,7 +206,7 @@ function onEditColorChange(parent) {
 		
 	})
 
-	// parent.parentElement.parentElement.parentElement =;
+
 }
 function editSubmit(btn) {
 	
@@ -217,4 +218,119 @@ function editSubmit(btn) {
 	parentEdit.style.backgroundColor = parent.style.backgroundColor;	
 }
 
+localStorage.setItem("card",Cards);
 
+
+function addLabel() {
+	document.body.classList.add("active");
+	const addLabelContainer =  document.querySelector(".popup-addLabel")
+	addLabelContainer.classList.add('active');
+}
+var labelList = [];
+function addLabelBtn(btn) {
+
+	let inputVal = btn.parentElement.children[1].value;
+	console.log(inputVal)
+	const label = document.createElement("div");
+	const label2 = document.createElement("div");
+	label.classList.add("button");
+	label2.classList.add("button");
+	let span = document.createElement("span");
+	
+	span.textContent = inputVal;
+
+	label.innerHTML = `<i class="fas fa-tag"></i>`;
+	label2.innerHTML = `<i class="fas fa-tag"></i>`;
+	console.log(document.querySelector(".container__sideNav2").lastElementChild);
+	document.querySelector(".container__sideNav2").lastElementChild.after(label2);
+	label.appendChild(span);
+	document.querySelector(".container__sideNav").lastElementChild.after(label);
+	document.querySelector(".searchResult").innerHTML += `<i class="fas fa-tag"></i>`
+	console.log(span);
+	
+	let span2 = document.createElement("span");
+	span2.textContent = inputVal;
+	document.querySelector(".searchResult").appendChild(span2);
+	
+	
+	
+	labelList.push(label);
+
+	closeAddLabel();
+}
+function closeAddLabel() {
+	document.body.classList.remove("active");
+	const addLabelContainer =  document.querySelector(".popup-addLabel")
+	addLabelContainer.classList.remove('active');
+}
+
+const searchContainer = document.querySelector("#search");
+searchContainer.addEventListener("keyup",(e) => {
+	if(e.code === 13 || e.key === "Enter") {
+		let searchterm = e.target.value.toLowerCase();
+		let labels = "";
+		labelList.forEach(label => {
+			// console.log("hellp")
+			labels = label.lastElementChild.innerText.toLowerCase();
+			
+		})
+		if(labels.indexOf(searchterm) != -1) {
+			document.body.classList.add("active");
+			const searchingLabel =  document.querySelector(".searchResult");
+			searchingLabel.classList.add("active");
+
+			
+		}
+		else {
+			alert("nothing named as such in label")
+			document.body.classList.remove("active");
+			const searchingLabel =  document.querySelector(".searchResult");
+			searchingLabel.classList.remove("active");
+		}
+	}
+	
+})
+
+function closeSearchLabel(parent) {
+	document.body.classList.remove("active");
+	parent.parentElement.classList.remove('active');
+}
+
+window.addEventListener("load",() => {
+	const parent = document.querySelector(".register");
+	document.body.classList.add("active");
+	parent.classList.add("active");
+
+
+})
+function registerMe(btn) {
+	const parent = btn.parentElement;
+	console.log(parent.children[2]);
+	localStorage.setItem(parent.children[1].id,parent.children[1].value)
+	localStorage.setItem(parent.children[2].id,parent.children[2].value);
+
+	openSignIn();
+}
+function openSignIn() {
+	const parent1 = document.querySelector(".register");
+	parent1.classList.remove("active");
+	const parent = document.querySelector(".signin");
+	document.body.classList.add("active");
+	parent.classList.add("active");
+
+
+}
+function signIn(btn) {
+	const parent = btn.parentElement;
+	
+	const name = localStorage.getItem("name");
+	const pass = localStorage.getItem("pass");
+
+	if(parent.children[1].value === name && parent.children[2].value === pass) {
+		document.body.classList.remove("active");
+		parent.classList.remove("active");
+	}
+	else {
+		alert("incorrect credentials")
+	}
+}

@@ -24,7 +24,7 @@
 		</div>
 		<div class="header__searchContainer">
 			<i class="fas fa-search"></i>
-			<input type="text" placeholder="Search">
+			<input id="search" type="text" placeholder="Search">
 		</div>
 		<div class="header__extraMenu">
 			<i class="fas fa-sync-alt"></i>
@@ -46,8 +46,8 @@
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18 17v-6c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v6H4v2h16v-2h-2zm-2 0H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6zm-4 5c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"></path></svg>
 				<span>Reminders</span>
 			</div>
-			<div class="button">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.41 4.94l-1.35-1.35c-.78-.78-2.05-.78-2.83 0L13.4 6.41 3 16.82V21h4.18l10.46-10.46 2.77-2.77c.79-.78.79-2.05 0-2.83zm-14 14.12L5 19v-1.36l9.82-9.82 1.41 1.41-9.82 9.83z"></path></svg>
+			<div class="button" onclick=addLabel()>
+				<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.41 4.94l-1.35-1.35c-.78-.78-2.05-.78-2.83 0L13.4 6.41 3 16.82V21h4.18l10.46-10.46 2.77-2.77c.79-.78.79-2.05 0-2.83zm-14 14.12L5 19v-1.36l9.82-9.82 1.41 1.41-9.82 9.83z"></path></svg>
 				<span>Edit Labels</span>
 			</div>
 			<div class="button">
@@ -68,7 +68,7 @@
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18 17v-6c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v6H4v2h16v-2h-2zm-2 0H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6zm-4 5c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"></path></svg>
 				
 			</div>
-			<div class="button">
+			<div class="button" onclick=addLabel()>
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.41 4.94l-1.35-1.35c-.78-.78-2.05-.78-2.83 0L13.4 6.41 3 16.82V21h4.18l10.46-10.46 2.77-2.77c.79-.78.79-2.05 0-2.83zm-14 14.12L5 19v-1.36l9.82-9.82 1.41 1.41-9.82 9.83z"></path></svg>
 			
 			</div>
@@ -127,7 +127,7 @@
 				<div class="container__notesNoteAndIcon">
 					<div class="container__notesNote">
 						<span>Ariz</span>
-						<p>Hi this is Ariz Khan! I have you like it</p>
+						<p>Hi this is Ariz Khan! I Hope you like it</p>
 					</div>
 					<div class="container__notesIconContainer">
 						<i class="fas fa-palette" onmouseover=changeColor(this)>
@@ -184,6 +184,29 @@
 			</div>
 			<p onclick=closeEditBox()>Close</p>
 		</div>
+	</div>
+	<div class="popup-addLabel">
+		<h3>Add Label
+			<i class="fas fa-times" onclick=closeAddLabel()></i>
+		</h3>
+		<input type="text" placeholder="Add Label.."/>
+		<button onClick=addLabelBtn(this)>Add Label</button>
+		
+	</div>
+	<div class="searchResult">
+		<i class="fas fa-times" onclick=closeSearchLabel(this)></i>
+	</div>
+	<div class="register" onload=openRegister()>
+		<h3>Register</h3>
+		<input type="text" id="name" placeholder="name">
+		<input type="password" id="pass" placeholder="password">
+		<button onclick=registerMe(this)>Register</button>
+	</div>
+	<div class="signin">
+		<h3>Sign in</h3>
+		<input type="text" id="name" placeholder="name">
+		<input type="password" id="pass" placeholder="password">
+		<button onclick=signIn(this)>Signin</button>
 	</div>
 	<script src="./home.js"></script>
 	
