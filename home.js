@@ -245,12 +245,16 @@ function addLabelBtn(btn) {
 	document.querySelector(".container__sideNav2").lastElementChild.after(label2);
 	label.appendChild(span);
 	document.querySelector(".container__sideNav").lastElementChild.after(label);
-	document.querySelector(".searchResult").innerHTML += `<i class="fas fa-tag"></i>`
+	let diving = document.createElement("div");
+
+	diving.innerHTML += `<i class="fas fa-tag"></i>`
 	console.log(span);
 	
 	let span2 = document.createElement("span");
 	span2.textContent = inputVal;
-	document.querySelector(".searchResult").appendChild(span2);
+	diving.appendChild(span2);
+
+	document.querySelector(".searchResult").appendChild(diving);
 	
 	
 	
